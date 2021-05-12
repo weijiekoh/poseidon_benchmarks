@@ -6,7 +6,7 @@
     "scripts": {
         "circom-helper": "circom-helper -c ./circomHelperConfig.json -nc -b ./build/circuits/ -p 9001 -m 4096 -s 1048576",
         "watch": "tsc --watch",
-        "build": "tsc && hardhat compile && node build/buildPoseidon.js && circom-helper -nc -y -c circomHelperConfig.json",
+        "build": "tsc && hardhat compile && node build/buildPoseidon.js && circom-helper -y -c circomHelperConfig.json -b ./build/circuits/ -p 3000",
         "benchmark": "node build/poseidon.js && snarkjs r1cs info build/circuits/Poseidon2.r1cs && snarkjs r1cs info build/circuits/Poseidon5.r1cs",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
