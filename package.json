@@ -1,0 +1,36 @@
+{
+    "name": "poseidon_benchmarks",
+    "version": "1.0.0",
+    "description": "",
+    "main": "build/index.js",
+    "scripts": {
+        "circom-helper": "circom-helper -c ./circomHelperConfig.json -nc -b ./build/circuits/ -p 9001 -m 4096 -s 1048576",
+        "watch": "tsc --watch",
+        "build": "tsc && hardhat compile && node build/buildPoseidon.js && circom-helper -nc -y -c circomHelperConfig.json",
+        "benchmark": "node build/poseidon.js && snarkjs r1cs info build/circuits/Poseidon2.r1cs && snarkjs r1cs info build/circuits/Poseidon5.r1cs",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/weijiekoh/poseidon_benchmarks.git"
+    },
+    "author": "Koh Wei Jie",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/weijiekoh/poseidon_benchmarks/issues"
+    },
+    "homepage": "https://github.com/weijiekoh/poseidon_benchmarks#readme",
+    "dependencies": {
+        "@nomiclabs/hardhat-ethers": "^2.0.2",
+        "circom": "^0.5.45",
+        "circom_runtime": "^0.1.12",
+        "circom-helper": "^0.1.10",
+        "circomlib": "0.5.1",
+        "ffiasm": "^0.1.1",
+        "hardhat": "^2.2.1",
+        "hardhat-artifactor": "^0.2.0",
+        "hardhat-contract-sizer": "^2.0.3",
+        "snarkjs": "^0.3.60",
+        "typescript": "^4.2.4"
+    }
+}
